@@ -15,9 +15,7 @@
                          <table id="example" class="table table-bordered dt-responsive nowrap table-striped align-middle" style="width:100%">
                                         <thead>
                                 <tr>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Phone</th>
-                                    <th scope="col">Email</th>
+                                    <th scope="col">Agent Details</th>
                                     <th scope="col">TL Name</th>
                                     <th scope="col">Agent Code</th>
                                     <th scope="col">PAN</th>
@@ -30,9 +28,10 @@
                             <tbody>
                                 @foreach ($members as $member)
                                 <tr>
-                                    <td>{{ $member->name }}</td>
-                                    <td>{{ $member->phone }}</td>
-                                    <td>{{ $member->email }}</td>
+                                    <td>{{ $member->name }}<br>
+                                        {{ $member->phone }}<br>
+                                    {{ $member->email }}</td>
+
                                     <td>{{ $member->tl_name->name?? '' }}</td>
                                     <td>{{ $member->user_id }}</td>
                                     <td>{{ $member->PAN }}</td>
