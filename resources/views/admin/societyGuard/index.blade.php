@@ -33,7 +33,7 @@
                                     <td>{{ $member->name }}</td>
                                     <td>{{ $member->phone }}</td>
                                     <td>{{ $member->email }}</td>
-                                    <td>{{ $member->tl_name->name }}</td>
+                                    <td>{{ $member->tl_name->name?? '' }}</td>
                                     <td>{{ $member->user_id }}</td>
                                     <td>{{ $member->PAN }}</td>
                                     <td>{{ $member->commision }}</td>
