@@ -15,8 +15,8 @@ use Illuminate\Support\Str;
 class SocietyController extends Controller
 {
 
-    private $razorpayId = "rzp_test_L1okHmHvgzGEp4";
-    private $razorpayKey = "qpVxIGhtG9MUerfWcdGDebmk";
+    private $razorpayId = "rzp_live_xylWoaUwDh9D0p";
+    private $razorpayKey = "0YfCQ7DFAJOj5fOgMHs9UgKj";
     /**
      * Display a listing of the resource.
      */
