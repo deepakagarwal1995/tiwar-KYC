@@ -79,3 +79,12 @@ Route::get('/storage-link', function () {
     echo symlink($target, $link);
     // echo "symbolic link created successfully";
 });
+
+Route::get('migrate', function () {
+    Artisan::call('view:clear');
+    Artisan::call('route:clear');
+    Artisan::call('config:clear');
+    Artisan::call('cache:clear');
+    Artisan::call('migrate');
+});
+
