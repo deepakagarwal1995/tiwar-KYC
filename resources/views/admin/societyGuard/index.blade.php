@@ -20,7 +20,7 @@
                                     <th scope="col">Agent Code</th>
                                     <th scope="col">PAN</th>
                                      <th scope="col">commision</th>
-                                   
+
                                     <th scope="col">Status</th>
                                     <th scope="col">Actions</th>
                                 </tr>
@@ -36,7 +36,7 @@
                                     <td>{{ $member->user_id }}</td>
                                     <td>{{ $member->PAN }}</td>
                                     <td>{{ $member->commision }}</td>
-                                    <td>{{ $member->sale }}</td>
+
                                     <td>
                                         <div class="form-check form-switch form-switch-md mb-3" dir="ltr">
                                             <input type="checkbox" class="form-check-input" id="customSwitchsizemd"

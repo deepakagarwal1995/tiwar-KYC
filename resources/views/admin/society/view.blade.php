@@ -188,6 +188,22 @@
                                                             </div>
                                                         </div>
                                                     </div>
+                                                     <div class="pt-3 border-top border-top-dashed mt-4">
+                                                        <div class="row gy-3">
+                                                            <div class="col-lg-6 col-sm-6">
+                                                                <div>
+                                                                    <p class="mb-2 text-uppercase fw-medium">Permanent Address:</p>
+                                                                    <h5 class="fs-15 mb-0">{{ $fs->paddress }}</h5>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-6 col-sm-6">
+                                                                <div>
+                                                                    <p class="mb-2 text-uppercase fw-medium">Vision:</p>
+                                                                    <h5 class="fs-15 mb-0">{{ $fs->vission }}</h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                     <div class="pt-3 border-top border-top-dashed mt-4">
                                                         <div class="row gy-3">
                                                             <div class="col-lg-6 col-sm-6">

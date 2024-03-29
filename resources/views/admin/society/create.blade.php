@@ -411,6 +411,15 @@
                                 <p class="text-danger">{{ $message }}</p>
                                 @enderror
                             </div>
+                             <div class="col-md-4">
+                                <div class="mb-3">
+                                    <label for="firstNameinput" class="form-label">Future vision</label>
+                                    <input type="text" class="form-control" placeholder="Enter vision" name="vission">
+                                </div>
+                                @error('vission')
+                                <p class="text-danger">{{ $message }}</p>
+                                @enderror
+                            </div>
 
                             <div class="col-md-12">
                                 <div class="mb-3">

@@ -6,11 +6,13 @@ use App\Models\Society;
 use App\Models\User;
 use App\Models\Resident;
 use App\Models\Member;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
 use Razorpay\Api\Api;
 use Illuminate\Support\Str;
+use DB;
 
 class SocietyController extends Controller
 {
@@ -90,6 +92,7 @@ class SocietyController extends Controller
             $user->email = $request->email;
             $user->annual_income = $request->annual_income;
             $user->last_c_name = $request->last_c_name;
+            $user->vission = $request->vission;
 
             $user->pay_status = 0;
 
@@ -225,6 +228,20 @@ class SocietyController extends Controller
         $title = 'Thanku';
 
         return view('admin.society.thanku', compact( 'title'));
+    }
+    public function home()
+    {
+
+        $title = 'Home Page';
+        $societies = Society::Join('residents', 'residents.id', '=', 'societies.policy_type')->select('societies.*', 'residents.name as policy')->where('pay_status',1)
+        ->orderby('societies.id', 'DESC')->limit(20)->get();
+
+        $total = Society::select(DB::raw('COUNT(id) As value'))->where('pay_status', 1)
+        ->first();
+        $today = Society::select(DB::raw('COUNT(id) As value'))->whereDate('created_at', Carbon::today())->where('pay_status', 1)
+        ->first();
+
+        return view('admin.society.home', compact('title', 'societies', 'today', 'total'));
     }
     public function edit($id)
     {
