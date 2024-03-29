@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <title>Tiwar KYC Manager</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta content="Ganpati Society Admin" name="description" />
+    <meta content="Tiwar KYC Manager | a way to veriFy someone's identity" name="description" />
     <!-- App favicon -->
     <link rel="shortcut icon" href="{{ config('app.url') }}/assets/images/cropped-favicon1-32x32.png">
     <!-- Layout config Js -->
