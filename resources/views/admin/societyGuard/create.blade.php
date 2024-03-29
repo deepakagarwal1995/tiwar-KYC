@@ -51,7 +51,7 @@
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="" class="form-label">Password</label><span class="text-danger">*</span>
-                                    <input type="password" class="form-control" value=""
+                                    <input type="password" class="form-control" value="" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
                                         placeholder="Enter the password" name="password">
                                 </div>
                                 @error('password')
@@ -78,7 +78,7 @@
                                         data-choices-sorting="true" name="society">
                                         <option selected="">Choose TL</option>
                                         @foreach ($societies as $society )
-                                        <option value="{{ $society->id }}">{{ $society->name }}</option>
+                                        <option value="{{ $society->id }}">{{ $society->name }} (code:{{ $society->id }})</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -88,9 +88,9 @@
                             </div>
                                <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="" class="form-label">PAN Card</label><span class="text-danger">*</span>
+                                    <label for="" class="form-label">Aadhar Card</label><span class="text-danger">*</span>
                                     <input type="text" class="form-control" value=""
-                                        placeholder="Enter PAN" name="PAN" required>
+                                        placeholder="Enter Aadhar" name="PAN" required>
                                 </div>
                                 @error('PAN')
                                 <p class="text-danger">{{ $message }}</p>

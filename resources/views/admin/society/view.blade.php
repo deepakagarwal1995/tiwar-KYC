@@ -51,7 +51,7 @@
                                                                     </div>
                                                                     <div class="vr"></div>
                                                                     <div>DOB : <span
-                                                                            class="fw-medium">{{ date('d-m-Y', strtotime($fs->last_expiry)) }}</span>
+                                                                            class="fw-medium">{{ date('d-m-Y', strtotime($fs->dob)) }}</span>
                                                                     </div>
                                                                     <div class="vr"></div>
                                                                     <div>Policy Type : <span
@@ -72,14 +72,14 @@
                                                         Basic Details
                                                     </a>
                                                 </li>
-                                                 
+
                                                 <li class="nav-item">
                                                     <a class="nav-link fw-semibold" data-bs-toggle="tab"
                                                         href="#project-activities" role="tab">
                                                         Documents
                                                     </a>
                                                 </li>
-                                              
+
                                             </ul>
                                         </div>
                                         <!-- end card body -->
@@ -119,17 +119,17 @@
                                                                     <p class="mb-2 text-uppercase fw-medium">Profile</p>
                                                                     <img src="{{ Storage::url($fs->last_copy)}}" style="    height: 51px;">
                                                                 </div>
-                                                            
+
                                                         </div>
                                                     </div>
 
                                                     <div class="pt-3 border-top border-top-dashed mt-4">
-                                                        
+
                                                     </div>
 
                                                     <div class="row gy-3">
 
-                                                        
+
                                                         <div class="col-lg-6 col-sm-6">
                                                             <div>
                                                                 <p class="mb-2 text-uppercase fw-medium">Vehicle Number (IF
@@ -197,7 +197,7 @@
                                                                     <h5 class="fs-15 mb-0">{{ $fs->annual_income }}</h5>
                                                                 </div>
                                                             </div>
-                                                            
+
                                                         </div>
                                                     </div>
                                                 </div>
@@ -212,7 +212,7 @@
 
                                         </div>
 
-                                         
+
                                     </div>
                                        <div class="tab-pane fade" id="project-activities" role="tabpanel">
                                         <div class="row g-4 mb-3">
@@ -262,7 +262,7 @@
 
 
 
-                                                   
+
 
                                                 </div>
                                             </div>

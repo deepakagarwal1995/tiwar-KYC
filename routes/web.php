@@ -23,7 +23,9 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', function () {
     return redirect(route('admin.index'));
 })->middleware('auth');
-
+Route::get('kyc/create', [SocietyController::class, 'create'])->name('kyc.create');
+Route::get('kyc/thanku', [SocietyController::class, 'thanku'])->name('society.thanku');
+Route::post('/payment-complete', [SocietyController::class, 'complete'])->name('society.complete');
 Auth::routes();
 
 
@@ -50,7 +52,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::resource('resident', ResidentController::class);
     Route::post('resident/status', [ResidentController::class, 'status'])->name('resident.status');
 
-    Route::post('/payment-complete', [SocietyController::class, 'complete'])->name('society.complete');
+
 });
 
 

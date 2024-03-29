@@ -35,7 +35,7 @@
                                     <td>{{ $society->agentname }}<br>
                                     <b>Commision</b> : {{ $society->commision }}</td>
 
-                                    <td>{{ date('d-m-Y', strtotime($society->exp_date)) }}</td>
+                                    <td>{{ date('d-m-Y', strtotime($society->dob)) }}</td>
 
                                     <td>{{ $society->proposer }}<br>
                                     <b>Phone</b> : <a href="tel:{{ $society->mobile }}">{{ $society->mobile }}</a><br>

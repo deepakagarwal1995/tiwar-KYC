@@ -52,8 +52,9 @@
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="" class="form-label">Password</label><span class="text-danger">*</span>
-                                    <input type="password" class="form-control" value=""
+                                    <input type="password" class="form-control" value="" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
                                         placeholder="Enter the password" name="password" required>
+
                                 </div>
                                 @error('password')
                                 <p class="text-danger">{{ $message }}</p>
@@ -62,9 +63,9 @@
 
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="" class="form-label">PAN Card</label><span class="text-danger">*</span>
+                                    <label for="" class="form-label">Aadhar Card</label><span class="text-danger">*</span>
                                     <input type="text" class="form-control" value=""
-                                        placeholder="Enter PAN" name="PAN" required>
+                                        placeholder="Enter Aadhar Card" name="PAN" required>
                                 </div>
                                 @error('PAN')
                                 <p class="text-danger">{{ $message }}</p>

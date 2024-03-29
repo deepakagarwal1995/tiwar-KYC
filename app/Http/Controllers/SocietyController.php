@@ -43,6 +43,7 @@ class SocietyController extends Controller
      */
     public function create()
     {
+        if((auth()->user())){
         if (auth()->user()->role_id == 1) {
             $agents = User::where(['role_id' => 3, 'status' => 1])->orderBy('user_id', 'ASC')->get();
         } elseif (auth()->user()->role_id == 2) {
@@ -51,6 +52,10 @@ class SocietyController extends Controller
         } else {
             $userid = auth()->user()->id;
             $agents = User::where(['id' => $userid])->orderBy('user_id', 'ASC')->get();
+        }
+        } else {
+
+            $agents =[];
         }
         //Session::flash('success', 'Task successfully added!');
 
@@ -74,25 +79,26 @@ class SocietyController extends Controller
             $user->policy_type = $request->policy_type;
             $user->agent = $request->agent;
 
-            $user->start_date = $request->start_date;
+            $user->paddress = $request->paddress;
             $user->vehicle_no = $request->vehicle_no;
             $user->proposer = $request->proposer;
             $user->address = $request->address;
             $user->dob = $request->dob;
             $user->ocupation = $request->ocupation;
             $user->gender = $request->gender;
-            $user->mobile = $request->mobile;
+            $user->mobile = $request->countryCode.$request->mobile;
             $user->email = $request->email;
             $user->annual_income = $request->annual_income;
             $user->last_c_name = $request->last_c_name;
-            $user->last_expiry = $request->last_expiry;
+
             $user->pay_status = 0;
 
 
             if (isset($request->agent) && $request->agent != '') {
                 $residents = Resident::where(['id' => $user->policy_type])->first();
                 $com_per = $residents->society;
-                $user->commision = round(($user->value / 100) * $com_per);
+                $user->commision =
+                $residents->society;
             }
 
             if ($request->file('last_copy')) {
@@ -182,7 +188,7 @@ class SocietyController extends Controller
             Society::where('id', $sId)
             ->update(['pay_status' => 1]);
 
-            return redirect()->route('society.index')->with('message', 'Policy added successfully!');
+            return redirect()->route('society.thanku')->with('message', 'Policy added successfully!');
         } else {
             echo'Payment Fail';
         }
@@ -213,6 +219,13 @@ class SocietyController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
+    public function thanku()
+    {
+
+        $title = 'Thanku';
+
+        return view('admin.society.thanku', compact( 'title'));
+    }
     public function edit($id)
     {
 

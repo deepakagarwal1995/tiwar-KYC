@@ -20,7 +20,7 @@
                                     <th scope="col">Agent Code</th>
                                     <th scope="col">PAN</th>
                                      <th scope="col">commision</th>
-                                     <th scope="col">Total Sale</th>
+                                   
                                     <th scope="col">Status</th>
                                     <th scope="col">Actions</th>
                                 </tr>

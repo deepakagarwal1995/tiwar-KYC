@@ -54,7 +54,7 @@
                         </ul>
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="{{ route('society.create') }}" class="nav-link" data-key="t-analytics"
+                                <a href="{{ route('society.create') }}" target="_blank" class="nav-link" data-key="t-analytics"
                                     style="font-size: 15px;">
                                     Create</a>
                             </li>
@@ -99,7 +99,7 @@
 
 
                                         <ul class="nav nav-sm flex-column">
-                                             
+
                                             <li class="nav-item">
                                                 <a href="{{ route('resident.index') }}" class="nav-link" data-key="t-analytics"
                                                     style="font-size: 15px;">

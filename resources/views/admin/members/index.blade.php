@@ -15,6 +15,7 @@
                          <table id="example" class="table table-bordered dt-responsive nowrap table-striped align-middle" style="width:100%">
                                         <thead>
                                 <tr>
+                                    <th scope="col">Code</th>
                                     <th scope="col">Name</th>
                                     <th scope="col">Phone</th>
                                     <th scope="col">Email</th>
@@ -29,6 +30,7 @@
                             <tbody>
                                 @foreach ($members as $member)
                                 <tr>
+                                    <td>{{ $member->id }}</td>
                                     <td>{{ $member->name }}</td>
                                     <td>{{ $member->phone }}</td>
                                     <td>{{ $member->email }}</td>

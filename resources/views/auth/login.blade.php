@@ -89,6 +89,10 @@
                                             <button class="btn btn-success w-100" type="submit">Sign In</button>
                                         </div>
                                     </form>
+
+                                     <div class="mt-4">
+                                            <a href="{{ route('kyc.create') }}" class="btn btn-warning w-100" type="submit">Create KYC</a>
+                                        </div>
                                 </div>
                             </div>
                             <!-- end card body -->
