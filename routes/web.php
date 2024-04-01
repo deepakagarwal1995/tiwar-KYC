@@ -26,7 +26,7 @@ Route::get('/', function () {
 Route::get('/home', [SocietyController::class, 'home'])->name('home');
 Route::get('kyc/create', [SocietyController::class, 'create'])->name('kyc.create');
 Route::get('kyc/thanku', [SocietyController::class, 'thanku'])->name('society.thanku');
-Route::post('/society/store', [SocietyController::class, 'store'])->name('society.store');
+Route::post('/kyc/store', [SocietyController::class, 'store'])->name('society.action');
 Route::post('/payment-complete', [SocietyController::class, 'complete'])->name('society.complete');
 Auth::routes();
 

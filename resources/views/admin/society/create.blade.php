@@ -31,7 +31,7 @@
             <!-- end card header -->
             <div class="card-body">
                 <div class="live-preview">
-                    <form action="{{ route('society.store') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('society.action') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="col-md-6">
