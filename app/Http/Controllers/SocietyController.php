@@ -232,9 +232,20 @@ class SocietyController extends Controller
     public function home()
     {
 
+        $keyword = request()->keyword;
+
         $title = 'Home Page';
-        $societies = Society::Join('residents', 'residents.id', '=', 'societies.policy_type')->select('societies.*', 'residents.name as policy')->where('pay_status',1)
-        ->orderby('societies.id', 'DESC')->limit(20)->get();
+        
+        if($keyword!=''){
+            $societies = Society::Join('residents', 'residents.id', '=', 'societies.policy_type')->select('societies.*', 'residents.name as policy')->where(function ($query) use ($keyword) {
+                $query->where('pay_status', '=', 1);
+            })->where(function ($query) use ($keyword) {
+                $query->where('societies.proposer', 'like', '%' . $keyword . '%')
+                ->orWhere('residents.name', 'like', '%' . $keyword . '%');
+            })->orderby('societies.id', 'DESC')->limit(20)->get();
+        }else{
+            $societies = Society::Join('residents', 'residents.id', '=', 'societies.policy_type')->select('societies.*', 'residents.name as policy')->where('pay_status', 1)->orderby('societies.id', 'DESC')->limit(20)->get();
+        }
 
         $total = Society::select(DB::raw('COUNT(id) As value'))->where('pay_status', 1)
         ->first();

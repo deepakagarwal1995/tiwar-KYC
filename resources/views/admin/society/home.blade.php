@@ -207,12 +207,31 @@
             <!-- start page title -->
             <div class="row">
                 <div class="col-12">
-                    <h4 class="mt-3 mb-3">Featured KYC Holders</h4>
-                </div>
-            </div>
+                   
+              
             <!-- end page title -->
-
-
+<div class="card">
+                                    <div class="card-header">
+                                        <div class="row g-4 align-items-center">
+                                            <div class="col-sm-auto">
+                                                <div>
+                                                     <h4 class="mt-3 mb-3">Featured KYC Holders</h4>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm">
+                                                <form action="?" method="GET">
+                                                <div class="d-flex justify-content-sm-end">
+                                                    <div class="search-box ms-2">
+                                                        <input type="search" id="default-search" name="keyword" value="{{ $_GET['keyword'] ?? '' }}" class="form-control" id="searchResultList" placeholder="Search for candidates...">
+                                                        <i class="ri-search-line search-icon"></i>
+                                                    </div>
+                                                </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+</div>  </div>
+            </div>
 
             <div class="job-list-row" style="background: #ddd;
     padding: 19px 8px 0 10px;">
