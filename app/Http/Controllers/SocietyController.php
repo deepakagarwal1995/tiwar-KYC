@@ -19,21 +19,26 @@ class SocietyController extends Controller
 
     private $razorpayId = "rzp_live_xylWoaUwDh9D0p";
     private $razorpayKey = "0YfCQ7DFAJOj5fOgMHs9UgKj";
+
+    // TEST
+    // private $razorpayId = "rzp_test_L1okHmHvgzGEp4";
+    // private $razorpayKey = "qpVxIGhtG9MUerfWcdGDebmk";
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
         if (auth()->user()->role_id == 1) {
-            $societies = Society::Join('residents', 'residents.id', '=', 'societies.policy_type')->leftJoin('users', 'users.user_id', '=', 'societies.agent')->select('societies.pay_status', 'societies.pay_status','societies.value', 'societies.id', 'societies.exp_date', 'societies.start_date', 'societies.mobile', 'societies.commision', 'societies.email', 'societies.status', 'societies.proposer', 'residents.name as policy', 'users.name as agentname')
+            $societies = Society::Join('residents', 'residents.id', '=', 'societies.policy_type')->leftJoin('users', 'users.user_id', '=', 'societies.agent')->select('societies.user_code', 'societies.pay_status', 'societies.pay_status','societies.value', 'societies.id', 'societies.exp_date', 'societies.start_date', 'societies.mobile', 'societies.commision', 'societies.email', 'societies.status', 'societies.proposer', 'residents.name as policy', 'users.name as agentname')
                 ->orderby('societies.id', 'DESC')->get();
         } elseif (auth()->user()->role_id == 2) {
             $userid = auth()->user()->id;
-            $societies = Society::Join('residents', 'residents.id', '=', 'societies.policy_type')->Join('users', 'users.user_id', '=', 'societies.agent')->select('societies.pay_status', 'societies.value', 'societies.id', 'societies.exp_date', 'societies.start_date', 'societies.mobile', 'societies.commision', 'societies.email', 'societies.status', 'societies.proposer', 'residents.name as policy', 'users.name as agentname')->where('users.society', $userid)
+            $societies = Society::Join('residents', 'residents.id', '=', 'societies.policy_type')->Join('users', 'users.user_id', '=', 'societies.agent')->select('societies.user_code', 'societies.pay_status', 'societies.value', 'societies.id', 'societies.exp_date', 'societies.start_date', 'societies.mobile', 'societies.commision', 'societies.email', 'societies.status', 'societies.proposer', 'residents.name as policy', 'users.name as agentname')->where('users.society', $userid)
                 ->orderby('societies.id', 'DESC')->get();
         } else {
             $userid = auth()->user()->user_id;
-            $societies = Society::Join('residents', 'residents.id', '=', 'societies.policy_type')->leftJoin('users', 'users.user_id', '=', 'societies.agent')->select('societies.pay_status', 'societies.value', 'societies.id', 'societies.exp_date', 'societies.start_date', 'societies.mobile', 'societies.commision', 'societies.email', 'societies.status', 'societies.proposer', 'residents.name as policy', 'users.name as agentname')->where('societies.agent', $userid)
+            $societies = Society::Join('residents', 'residents.id', '=', 'societies.policy_type')->leftJoin('users', 'users.user_id', '=', 'societies.agent')->select('societies.user_code', 'societies.pay_status', 'societies.value', 'societies.id', 'societies.exp_date', 'societies.start_date', 'societies.mobile', 'societies.commision', 'societies.email', 'societies.status', 'societies.proposer', 'residents.name as policy', 'users.name as agentname')->where('societies.agent', $userid)
                 ->orderby('societies.id', 'DESC')->get();
         }
 
@@ -130,7 +135,12 @@ class SocietyController extends Controller
             $user->save();
 
 
+
             $policyID = $user->id;
+
+            $code = Society::findOrFail($policyID);
+            $code->user_code = 'TIWAR-0'. $policyID;
+            $code->save();
 
             $receiptId = strval($policyID);
             $api = new Api($this->razorpayId, $this->razorpayKey);
@@ -191,7 +201,7 @@ class SocietyController extends Controller
             Society::where('id', $sId)
             ->update(['pay_status' => 1]);
 
-            return redirect()->route('society.thanku')->with('message', 'Policy added successfully!');
+            return redirect()->route('society.thanku', $sId)->with('message', 'Policy added successfully!');
         } else {
             echo'Payment Fail';
         }
@@ -222,12 +232,13 @@ class SocietyController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function thanku()
+    public function thanku(Request $request,$id)
     {
+        $code = Society::findOrFail($id);
 
         $title = 'Thanku';
 
-        return view('admin.society.thanku', compact( 'title'));
+        return view('admin.society.thanku', compact( 'title', 'code'));
     }
     public function home()
     {
@@ -235,7 +246,7 @@ class SocietyController extends Controller
         $keyword = request()->keyword;
 
         $title = 'Home Page';
-        
+
         if($keyword!=''){
             $societies = Society::Join('residents', 'residents.id', '=', 'societies.policy_type')->select('societies.*', 'residents.name as policy')->where(function ($query) use ($keyword) {
                 $query->where('pay_status', '=', 1);

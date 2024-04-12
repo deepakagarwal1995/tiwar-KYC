@@ -40,6 +40,10 @@
                         <p>
                             Thank You We have received your payment Successfully
                         </p>
+                        <h4>
+                          Dear KYC Holder Your ID Code Is <br>
+                        </h4>
+                        <h4><mark class="mt-3"><b>{{$code->user_code}}</b></mark></h4>
 
                     </div>
                 </div>

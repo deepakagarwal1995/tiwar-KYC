@@ -29,7 +29,8 @@
                                 <tr>
                                     <td>{{ $loop->index }}</td>
 
-                                    <td><mark>{{ $society->policy }}</mark>
+                                    <td><mark>{{ $society->policy }}</mark><br>
+                                        ID : {{ $society->user_code }}
                                      </td>
 
                                     <td>{{ $society->agentname }}<br>

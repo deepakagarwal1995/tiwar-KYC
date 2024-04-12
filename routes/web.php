@@ -25,7 +25,7 @@ Route::get('/', function () {
 })->middleware('auth');
 Route::get('/home', [SocietyController::class, 'home'])->name('home');
 Route::get('kyc/create', [SocietyController::class, 'create'])->name('kyc.create');
-Route::get('kyc/thanku', [SocietyController::class, 'thanku'])->name('society.thanku');
+Route::get('kyc/thanku/{id}', [SocietyController::class, 'thanku'])->name('society.thanku');
 Route::post('/kyc/store', [SocietyController::class, 'store'])->name('society.action');
 Route::post('/payment-complete', [SocietyController::class, 'complete'])->name('society.complete');
 Auth::routes();
